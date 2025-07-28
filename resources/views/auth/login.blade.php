@@ -1,5 +1,6 @@
 @extends('adminlte::auth.login')
 
+
 @section('auth_footer')
     <div class="text-center mb-3">
         <a href="{{ route('login.google') }}" class="btn btn-danger btn-block">

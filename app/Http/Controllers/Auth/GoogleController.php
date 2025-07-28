@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
+
 class GoogleController extends Controller
 {
     public function redirectToGoogle()
@@ -19,13 +20,13 @@ class GoogleController extends Controller
     {
         try {
             $googleUser = Socialite::driver('google')->user();
-
+            
             $user = User::firstOrCreate(
                 ['email' => $googleUser->getEmail()],
                 [
                     'name' => $googleUser->getName(),
                     'password' => bcrypt(Str::random(16)),
-                    'rol' => 'Cliente',
+                    'rol' => "Cliente"
                 ]
             );
 
