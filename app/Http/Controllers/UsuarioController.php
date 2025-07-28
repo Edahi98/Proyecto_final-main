@@ -32,7 +32,10 @@ class UsuarioController extends Controller
             'email' => 'required|email|unique:users,email,' . $request->id,
             'rol' => 'required|string|max:50',
             'password' => $request->id ? 'nullable|confirmed|min:6' : 'required|confirmed|min:6',
-        ]);
+            'privacidad' => 'accepted',
+        ],[
+    'privacidad.accepted' => 'Debes aceptar el aviso de privacidad para continuar.',
+]);
 
         $usuario = $request->id == 0 ? new User() : User::findOrFail($request->id);
 
