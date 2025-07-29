@@ -71,4 +71,6 @@ Route::middleware(['auth', ActivityLogger::class])->group(function () {
     Route::middleware('rol:Cliente,Admin')->group(function () {
         Route::get('/membresias_cliente', [MembresiaController::class, 'list'])->name('membresias.cliente');
     });
+    // PERFIL: todos los roles
+    Route::get('/perfil', [\App\Http\Controllers\PerfilController::class, 'show'])->name('perfil.show');
 });

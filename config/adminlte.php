@@ -371,6 +371,12 @@ return [
             ],
         ],
     ],
+    [
+        'text' => 'Mi Perfil',
+        'icon' => 'fas fa-id-badge',
+        'route' => 'perfil.show',
+        'active' => ['perfil*'],
+    ],
 ],
 
 
