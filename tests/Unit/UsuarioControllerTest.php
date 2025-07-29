@@ -93,7 +93,7 @@ class UsuarioControllerTest extends TestCase
         }
     }
 
-    // Variantes y repeticiones para llegar a 40 pruebas
+    
     public function test_controller_is_object()
     {
         $controller = new UsuarioController();

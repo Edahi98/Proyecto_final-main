@@ -74,8 +74,15 @@ Route::middleware(['auth', ActivityLogger::class])->group(function () {
         Route::get('/clases', [ClasesController::class, 'list'])->name('clases');
     });
 
-    // CLIENTE: ver membresías
+    // CLIENTE: ver membresías y clases
     Route::middleware('rol:Cliente,Admin')->group(function () {
         Route::get('/membresias_cliente', [MembresiaController::class, 'list'])->name('membresias.cliente');
+        Route::get('/clases_cliente', [ClasesController::class, 'list'])->name('clases.cliente');
+        Route::get('/pagos_historial', function() {
+            // Aquí puedes mostrar una vista de historial de pagos personalizada
+            return view('pagos.historial');
+        })->name('pagos.historial');
     });
+    // PERFIL: todos los roles
+    Route::get('/perfil', [\App\Http\Controllers\PerfilController::class, 'show'])->name('perfil.show');
 });

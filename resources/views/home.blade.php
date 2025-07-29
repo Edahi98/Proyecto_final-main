@@ -51,9 +51,57 @@
             </div>
         </div>
     </div>
+    <!-- Sección de roles del sistema -->
+    <div class="row mt-5">
+        <div class="col-12 mb-4">
+            <h2 class="text-center text-primary">¿Qué roles existen en el sistema?</h2>
+        </div>
+        <div class="col-md-4 mb-3">
+            @component('components.rol_card', [
+                'icon' => 'fas fa-user-shield',
+                'title' => 'Administrador',
+                'description' => 'Gestiona todo el sistema: usuarios, membresías, clases, pagos y reportes.',
+                'features' => [
+                    'Acceso total a todas las funciones',
+                    'Alta, edición y eliminación de usuarios',
+                    'Gestión de membresías y clases',
+                    'Visualización de reportes y estadísticas',
+                ]
+            ])
+            @endcomponent
+        </div>
+        <div class="col-md-4 mb-3">
+            @component('components.rol_card', [
+                'icon' => 'fas fa-user-tie',
+                'title' => 'Empleado',
+                'description' => 'Apoya en la gestión diaria, atención a clientes y registro de asistencias.',
+                'features' => [
+                    'Registro de asistencias a clases',
+                    'Gestión de pagos y membresías',
+                    'Consulta de información de clientes',
+                ]
+            ])
+            @endcomponent
+        </div>
+        <div class="col-md-4 mb-3">
+            @component('components.rol_card', [
+                'icon' => 'fas fa-user',
+                'title' => 'Cliente',
+                'description' => 'Accede a sus datos, consulta membresías, clases y realiza pagos.',
+                'features' => [
+                    'Consulta de membresías activas',
+                    'Visualización de clases disponibles',
+                    'Historial de pagos y asistencias',
+                ]
+            ])
+            @endcomponent
+        </div>
+    </div>
 @stop
 
 @section('css')
+    <!-- FontAwesome para íconos de roles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papm6p6Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             background: linear-gradient(to right, #dfe9f3, #ffffff);
