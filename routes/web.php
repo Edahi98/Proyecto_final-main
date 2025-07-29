@@ -12,12 +12,6 @@ use App\Http\Controllers\LogsController;
 use App\Http\Controllers\HomeController;
 
 
-
-
-
-
-
-
 // Página principal y aviso de privacidad
 Route::view('/', 'welcome');
 Route::view('/privacidad', 'privacidad');

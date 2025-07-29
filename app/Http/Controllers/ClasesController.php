@@ -27,14 +27,18 @@ class ClasesController extends Controller
     public function index()
     {
         $clase = new Clase();
-        $profesores = User::all();
+       $profesores = User::where('rol', 'Empleado')
+                      ->orderBy('name')
+                      ->get();
         return view('admin.nueva', compact('clase', 'profesores'));
     }
 
     public function edit($id)
     {
         $clase = Clase::findOrFail($id);
-        $profesores = User::all();
+        $profesores = User::where('rol', 'Empleado')
+                      ->orderBy('name')
+                      ->get();
         return view('admin.nueva', compact('clase', 'profesores'));
     }
 
