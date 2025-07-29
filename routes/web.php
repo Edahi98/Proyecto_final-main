@@ -3,13 +3,20 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\ActivityLogger;
-
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\MembresiaController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ClasesController;
 use App\Http\Controllers\LogsController;
 use App\Http\Controllers\HomeController;
+
+
+
+
+
+
+
 
 // Página principal y aviso de privacidad
 Route::view('/', 'welcome');

@@ -75,7 +75,4 @@
 @stop
 
 @section('js')
-    <script>
-        console.log("Bienvenido a Albercas Chulas 🏖️");
-    </script>
 @stop

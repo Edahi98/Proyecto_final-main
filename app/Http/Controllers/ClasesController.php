@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Clase;
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,15 +41,16 @@ class ClasesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fecha' => 'required|date',
+            'fecha' => 'required|date_format:Y-m-d\TH:i',
             'id_profesor' => 'required|exists:users,id',
             'tipo' => 'required|string|max:100',
             'lugares' => 'required|integer|min:1',
         ]);
 
         $clase = $request->id == 0 ? new Clase() : Clase::findOrFail($request->id);
+        $fecha  = \Carbon\Carbon::createFromFormat('Y-m-d\TH:i', $request->fecha);
 
-        $clase->fecha = $request->fecha;
+        $clase->fecha = $fecha;
         $clase->id_profesor = $request->id_profesor;
         $clase->tipo = $request->tipo;
         $clase->lugares = $request->lugares;

@@ -31,7 +31,7 @@
                         @foreach($clases as $clase)
                         <tr>
                             <td>{{ $clase->id }}</td>
-                             <td>{{ $clase->fecha->format('d/m/Y') }}</td>
+                             <td>{{ $clase->fecha->format('d/m/Y H:i') }}</td>
                             <td>{{ $clase->profesor->name ?? 'N/A' }}</td>
                             <td>{{ $clase->tipo }}</td>
                             <td>{{ $clase->lugares }}</td>

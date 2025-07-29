@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
@@ -27,15 +28,28 @@ class UsuarioController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $request->id,
-            'rol' => 'required|string|max:50',
-            'password' => $request->id ? 'nullable|confirmed|min:6' : 'required|confirmed|min:6',
-            'privacidad' => 'accepted',
-        ],[
-    'privacidad.accepted' => 'Debes aceptar el aviso de privacidad para continuar.',
-]);
+         // Reglas base
+    $rules = [
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $request->id,
+        'rol' => 'required|string|max:50',
+        'password' => $request->id ? 'nullable|confirmed|min:6' : 'required|confirmed|min:6',
+    ];
+
+    $messages = [];
+
+    // Detectar si viene del panel de admin
+    $esRegistroAdmin = $request->route()->getName() === 'admin.usuarios.store' || 
+                      str_contains($request->route()->getPrefix(), 'Admin') ||
+                      Auth::user()->rol === 'Admin'; // Ajusta según tu lógica de roles
+
+    if (!$esRegistroAdmin) {
+        $rules['privacidad'] = 'accepted';
+        $messages['privacidad.accepted'] = 'Debes aceptar el aviso de privacidad para continuar.';
+    }
+
+    $request->validate($rules, $messages);
+
 
         $usuario = $request->id == 0 ? new User() : User::findOrFail($request->id);
 
